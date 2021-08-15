@@ -152,7 +152,7 @@ function Dashboard() {
   
   
         <div class='content'>
-          <h1>content</h1>
+        
 
           {panels.dashboardpanel && <DashboardPanel/>}
           {panels.doctorpanel && <DoctorPanel/>}

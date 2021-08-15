@@ -1,11 +1,22 @@
-import React from 'react'
+
 import './doctorlist.css'
 import Switch from '@material-ui/core/Switch';
+import React, { Component } from 'react';
 
+class Doctorlist extends Component {
+    state = {  }
+    render() { 
 
-function doctorlist() {
-    return (
-        <div class='container'>   
+        const {doctorlistingSort, openDoctorView} = this.props
+
+        return ( 
+            <div class='container'>   
+
+            
+            
+                           
+
+                
 
                                     <div class='row'>
 
@@ -13,13 +24,14 @@ function doctorlist() {
                                                         <div class="input-group">
                                                     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                                                         aria-describedby="search-addon" />
-                                                    <button type="button" class="btn btn-outline-primary">search</button>
+                                                    <button type="button" class="btn btn-outline-primary">search3</button>
                                                     </div>
                                         </div>
 
                                     </div>
                                   
 
+                                   
 
 
                             <div class=' dtable mt-5'>
@@ -29,15 +41,19 @@ function doctorlist() {
                                 <th scope="col">#</th>
                                 <th scope="col">Active</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Speciality</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Speciality</th>
                                 <th scope="col">Contact Number</th>
                                 <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+
+
+                            {doctorlistingSort.map((doctor,index)=>
+
                                 <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{index+1}</th>
 
                                 <td>
                                                         <Switch
@@ -49,17 +65,18 @@ function doctorlist() {
                             />    
                                 </td>
 
-                                <td>Dr Roger Brown</td>
-                                <td>test@gmail.com</td>
-                                <td>General</td>
-                                <td>949-5555</td>
+                                <td>{doctor.first_name} {doctor.last_name}</td>
+                                <td>{doctor.email}</td>
+                                <td>{doctor.field.name}</td>
+                                <td>{doctor.phone}</td>
                                 <td>
                                    
-                                    <button type="button" class="btn btn-warning btn-sm  px-3">
-                                     Edit
+                                    <button type="button" class="btn btn-primary btn-sm  px-3" onClick={()=>openDoctorView(doctor)}>
+                                     View
                                     </button>
                                 </td>
                                 </tr>
+                            )}
                                 
                             </tbody>
                             </table>
@@ -68,7 +85,11 @@ function doctorlist() {
 
                     
         </div>
-    )
+
+         );
+    }
 }
 
-export default doctorlist
+
+
+export default Doctorlist;
